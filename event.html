@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Greeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #greeting-card {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        #user-name {
+            margin-bottom: 10px;
+        }
+
+        #background-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        #share-link {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="greeting-card">
+        <h1>New Year Greetings!</h1>
+        <div>
+            <label for="user-name">Enter your name:</label>
+            <input type="text" id="user-name">
+        </div>
+        <!-- <img id="background-image" src="https://picsum.photos/1200/800" alt="Background Image"> -->
+        <!-- <div>
+            <label for="flowers">Choose flowers:</label>
+            <select id="flowers">
+                <option value="rose">Rose</option>
+                <option value="lily">Lily</option>
+                <option value="tulip">Tulip</option>
+            </select>
+        </div> -->
+        <button onclick="generateGreeting()">Generate Greeting</button>
+        <div id="share-link">
+            <p>Share this link:</p>
+            <input type="text" id="generated-link" readonly>
+        </div>
+    </div>
+
+    <script>
+        function generateGreeting() {
+            const userName = document.getElementById('user-name').value;
+          //  const selectedFlower = document.getElementById('flowers').value;
+            //const backgroundImagePath = `https://picsum.photos/1200/800?random=${Math.random()}`;
+            const currentURL = window.location.href;
+
+            // Customize the greeting message
+            const greetingMessage = `Hello ${userName}! Wishing you a wonderful New Year filled with joy and success.`;
+
+            // Update the DOM with the generated greeting
+            document.getElementById('greeting-card').innerHTML = `
+                <h1>New Year Greetings!</h1>
+                <p>${greetingMessage}</p>
+              
+                <button onclick="generateGreeting()">Generate Greeting</button>
+                <div id="share-link">
+                    <p>Share this link:</p>
+                    <input type="text" id="generated-link" value="${currentURL}?name=${encodeURIComponent(userName)}" readonly>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
